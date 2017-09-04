@@ -40,7 +40,7 @@ class LearningAgent(Agent):
         # Update additional class parameters as needed
         # If 'testing' is True, set epsilon and alpha to 0
         #self.epsilon -= 0.05
-        self.epsilon *= 0.99
+        self.epsilon *= 0.995
         if testing :
             self.epsilon = 0
             self.alpha = 0
@@ -154,8 +154,8 @@ class LearningAgent(Agent):
         ###########
         # When learning, implement the value iteration update rule
         #   Use only the learning rate 'alpha' (do not use the discount factor 'gamma')
-
-        self.Q[state][action] += self.alpha * reward
+        #self.Q[state][action] += self.alpha * (reward + gamma * ('''future value''') - self.Q[state][action])
+        self.Q[state][action] += self.alpha * (reward - self.Q[state][action])
         return
 
 
@@ -191,7 +191,7 @@ def run():
     #   learning   - set to True to force the driving agent to use Q-learning
     #    * epsilon - continuous value for the exploration factor, default is 1
     #    * alpha   - continuous value for the learning rate, default is 0.5
-    agent = env.create_agent(LearningAgent, learning=True, epsilon = 1.0, alpha = 0.2)
+    agent = env.create_agent(LearningAgent, learning=True, epsilon = 1.0, alpha = 0.1)
     
     ##############
     # Follow the driving agent
