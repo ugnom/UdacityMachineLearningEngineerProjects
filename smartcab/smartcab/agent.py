@@ -155,7 +155,8 @@ class LearningAgent(Agent):
         # When learning, implement the value iteration update rule
         #   Use only the learning rate 'alpha' (do not use the discount factor 'gamma')
         #self.Q[state][action] += self.alpha * (reward + gamma * ('''future value''') - self.Q[state][action])
-        self.Q[state][action] += self.alpha * (reward - self.Q[state][action])
+        if self.learning :
+            self.Q[state][action] += self.alpha * (reward - self.Q[state][action])
         return
 
 
@@ -208,7 +209,7 @@ def run():
     #   log_metrics  - set to True to log trial and simulation results to /logs
     #   optimized    - set to True to change the default log file name
     #sim = Simulator(env)
-    sim = Simulator(env, update_delay = 0.01, log_metrics = True, optimized = True)
+    sim = Simulator(env, update_delay = 0.005, log_metrics = True, optimized = True)
     
     ##############
     # Run the simulator
@@ -216,7 +217,7 @@ def run():
     #   tolerance  - epsilon tolerance before beginning testing, default is 0.05 
     #   n_test     - discrete number of testing trials to perform, default is 0
     #sim.run()
-    sim.run(n_test = 20, tolerance = 0.015)
+    sim.run(n_test = 30, tolerance = 0.015)
 
 
 if __name__ == '__main__':
