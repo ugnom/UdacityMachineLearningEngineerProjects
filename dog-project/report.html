@@ -13503,6 +13503,9 @@ accuracy : 94.0%
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 2:</strong> This algorithmic choice necessitates that we communicate to the user that we accept human images only when they provide a clear view of a face (otherwise, we risk having unneccessarily frustrated users!). In your opinion, is this a reasonable expectation to pose on the user? If not, can you think of a way to detect humans in images that does not necessitate an image with a clearly presented face?</p>
 <p><strong>Answer:</strong></p>
+<ul>
+<li>Yes. I think if we try to include more patterns, such as half hidden or side faced, we have to have patterns to import or having a good samples of these patterns if we want to make the model learn. </li>
+</ul>
 <p>We suggest the face detector from OpenCV as a potential way to detect human images in your algorithm, but you are free to explore other approaches, especially approaches that make use of deep learning :).  Please use the code cell below to design and test your own face detection algorithm.  If you decide to pursue this <em>optional</em> task, report performance on each of the datasets.</p>
 
 </div>
@@ -14882,7 +14885,7 @@ Epoch 20/20
 <p><strong>Question 6:</strong> Is the output better than you expected :) ?  Or worse :( ?  Provide at least three possible points of improvement for your algorithm.</p>
 <p><strong>Answer:</strong></p>
 <ul>
-<li>It's more or less as I expected.</li>
+<li>Accuracy of the face/dog detection and dog breed classification is expected level comparing to the testing done previously. Not really sure about human to dog, as there are no relevant metrics to tell correct or wrong.</li>
 <li>The rate of mistakenly detecting human from dog picture is a bit high, so I think I can improve that part to get more accurate result</li>
 <li>I'm not sure how I can do it good, but it's better having some kind of reasoning of detecting dog breed from human picture</li>
 <li>Also I can get a better result of the correctness of the dog breed from dog picture if I can improve the dog breed detection model.</li>
